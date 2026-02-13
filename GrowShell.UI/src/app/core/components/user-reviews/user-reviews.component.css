@@ -1,0 +1,10 @@
+@keyframes marqueeVertical {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  .animate-marquee-vertical {
+    animation: marqueeVertical 40s linear infinite;
+  }
+  .hover\\:pause-animation:hover {
+    animation-play-state: paused;
+  }
