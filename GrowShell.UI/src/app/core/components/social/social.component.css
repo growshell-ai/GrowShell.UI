@@ -1,13 +1,13 @@
 @keyframes marquee {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
-  }
-  .animate-marquee {
-    width: max-content;
-    will-change: transform;
-    animation: marquee 40s linear infinite;
-  }
-  .hover\\:pause-animation:hover {
-    animation-play-state: paused;
-  }
-  .invert { filter: invert(0); } 
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.animate-marquee {
+  width: max-content;
+  will-change: transform;
+  animation: marquee 40s linear infinite;
+}
+.hover\\:pause-animation:hover {
+  animation-play-state: paused;
+}
+.invert { filter: invert(0); } 
