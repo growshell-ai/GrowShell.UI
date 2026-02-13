@@ -1,54 +1,59 @@
-<section class="py-16 bg-white border-y border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-16 bg-white border-y border-gray-100 overflow-hidden relative">
       
-      <p class="text-center text-sm font-semibold text-gray-400 uppercase tracking-wider mb-10">Trusted by fast-growing teams</p>
-      
-      <div class="flex flex-wrap justify-center items-center gap-12 lg:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-        <!-- Acme -->
-        <div class="text-xl font-bold text-gray-800 flex items-center gap-2">
-          <svg class="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2 5-2 5-2-5 2-5z"/></svg>
-          ACME Corp
-        </div>
-        <!-- Linear -->
-        <div class="text-xl font-bold text-gray-800 flex items-center gap-2">
-           <svg class="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-          Linear
-        </div>
-        <!-- Vercel -->
-        <div class="text-xl font-bold text-gray-800 flex items-center gap-2">
-          <svg class="w-6 h-6 text-gray-900" viewBox="0 0 24 24" fill="currentColor"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>
-          Vercel
-        </div>
-        <!-- Stripe -->
-        <div class="text-xl font-bold text-gray-800 flex items-center gap-2">
-          <svg class="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4l6.5 13h-13L12 6z"/></svg>
-          Stripe
-        </div>
-        <!-- Notion -->
-        <div class="text-xl font-bold text-gray-800 flex items-center gap-2">
-          <svg class="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
-          Notion
-        </div>
-      </div>
+  <!-- Top Row: Marquee Notifications -->
+  <div class="relative w-full mb-24">
+    <!-- Fade masks for smooth edges -->
+    <div class="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+    
+    <div class="flex overflow-hidden group">
+      <!-- Marquee Track -->
+      <!-- Removed gap-6, using mr-6 on items for perfect loop calculation -->
+      <div class="flex animate-marquee hover:pause-animation items-center">
+        
+        <!-- Render items twice for seamless loop -->
+        <ng-container *ngFor="let i of [1, 2]">
+          @for (item of items; track $index) {
+            <div class="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-4 pr-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] min-w-[280px] hover:shadow-lg transition-all duration-300 cursor-default group/card mr-6 shrink-0">
+              <!-- Logo Container -->
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform group-hover/card:scale-110" [ngClass]="item.bg">
+                <img [src]="item.logoUrl" [alt]="item.company" class="w-6 h-6 object-contain" [class.invert]="item.company === 'Apple' || item.company === 'Uber'">
+              </div>
+              
+              <!-- Text Info -->
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-1">
+                  <h4 class="font-bold text-gray-900 text-sm truncate">{{ item.company }}</h4>
+                  <span class="text-[10px] font-bold text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full border border-gray-100">{{ item.time }}</span>
+                </div>
+                <p class="text-xs text-gray-500 font-medium truncate">{{ item.role }}</p>
+              </div>
+            </div>
+          }
+        </ng-container>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
-        <div class="text-center">
-          <div class="text-4xl font-bold text-gray-900 mb-2">10k+</div>
-          <div class="text-sm text-gray-500">Active Jobs</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-gray-900 mb-2">50+</div>
-          <div class="text-sm text-gray-500">Partner Companies</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-gray-900 mb-2">95%</div>
-          <div class="text-sm text-gray-500">Placement Rate</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-gray-900 mb-2">24h</div>
-          <div class="text-sm text-gray-500">Avg Response Time</div>
-        </div>
       </div>
-
     </div>
-  </section>
+  </div>
+
+  <!-- Bottom Row: Trusted By Logos -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <p class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-12">Trusted by professionals at</p>
+    
+    <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-10 opacity-40 hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0">
+       <!-- Google -->
+       <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="h-6 md:h-7 object-contain">
+       <!-- Microsoft -->
+       <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" class="h-6 md:h-7 object-contain">
+       <!-- Amazon -->
+       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="h-6 md:h-8 object-contain mt-2">
+       <!-- Meta -->
+       <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" class="h-4 md:h-5 object-contain"> 
+       <!-- Apple -->
+       <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" class="h-6 md:h-7 object-contain">
+       <!-- Netflix -->
+       <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="h-5 md:h-6 object-contain">
+    </div>
+  </div>
+
+</section>
