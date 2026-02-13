@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-faq',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.css'
 })
