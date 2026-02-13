@@ -1,0 +1,15 @@
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 3s infinite;
+  }
+  select:focus, input:focus {
+      border-color: #7C3AED !important;
+      box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.1) !important;
+  }
