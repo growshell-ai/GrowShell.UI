@@ -1,10 +1,10 @@
-<header 
+<nav 
       class="fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300"
       [ngClass]="isScrolled() ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/70 backdrop-blur-md border-b border-transparent'"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
         <!-- Logo -->
-        <a routerLink="/" class="flex items-center gap-3 group z-50 relative" (click)="closeMenu()">
+        <a routerLink="/" class="flex items-center gap-3 group" (click)="closeMenu()">
           <div class="w-10 h-10 bg-violet-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:bg-violet-700 transition-colors">
             GS
           </div>
@@ -12,11 +12,11 @@
         </a>
 
         <!-- Desktop Nav -->
-        <nav class="hidden md:flex items-center gap-8">
+        <div class="hidden md:flex items-center gap-8">
           <a routerLink="/jobs" routerLinkActive="text-violet-600 bg-violet-50" class="text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg transition-colors">Find Jobs</a>
           <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg transition-colors">Companies</a>
           <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg transition-colors">Salaries</a>
-        </nav>
+        </div>
 
         <!-- Desktop Auth Buttons -->
         <div class="hidden md:flex items-center gap-3">
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Mobile Menu Button -->
-        <button (click)="toggleMenu()" class="md:hidden relative z-50 p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none" aria-label="Toggle menu">
+        <button (click)="toggleMenu()" class="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none" aria-label="Toggle menu">
           @if (!isMenuOpen()) {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -41,28 +41,29 @@
           }
         </button>
       </div>
+    </nav>
 
-      <!-- Mobile Menu Overlay -->
-      @if (isMenuOpen()) {
-        <div class="fixed inset-0 bg-white z-40 md:hidden pt-20 px-4 animate-fade-in-down overflow-y-auto">
-          <nav class="flex flex-col gap-4">
-             <a routerLink="/jobs" (click)="closeMenu()" routerLinkActive="text-violet-600 bg-violet-50" class="text-base font-medium text-gray-900 hover:bg-gray-50 px-4 py-3 rounded-xl transition-colors">Find Jobs</a>
-             <a href="#" (click)="closeMenu()" class="text-base font-medium text-gray-900 hover:bg-gray-50 px-4 py-3 rounded-xl transition-colors">Companies</a>
-             <a href="#" (click)="closeMenu()" class="text-base font-medium text-gray-900 hover:bg-gray-50 px-4 py-3 rounded-xl transition-colors">Salaries</a>
-             
-             <div class="h-px bg-gray-100 my-2"></div>
-             
-             <div class="flex flex-col gap-3">
-               <a routerLink="/login" (click)="closeMenu()" class="w-full inline-flex items-center justify-center px-4 py-3 border border-gray-200 shadow-sm text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-colors">
-                  Log in
-               </a>
-               <a routerLink="/signup" (click)="closeMenu()" class="w-full inline-flex items-center justify-center px-4 py-3 border border-transparent shadow-sm text-base font-medium rounded-xl text-white bg-violet-600 hover:bg-violet-700 transition-colors">
-                  Sign up
-               </a>
-             </div>
-          </nav>
-        </div>
-      }
-    </header>
+    <!-- Mobile Menu Overlay -->
+    @if (isMenuOpen()) {
+      <div class="fixed inset-0 bg-white z-40 md:hidden pt-20 px-4 animate-fade-in-down overflow-y-auto">
+        <nav class="flex flex-col gap-4">
+           <a routerLink="/jobs" (click)="closeMenu()" routerLinkActive="text-violet-600 bg-violet-50" class="text-base font-medium text-gray-900 hover:bg-gray-50 px-4 py-3 rounded-xl transition-colors">Find Jobs</a>
+           <a href="#" (click)="closeMenu()" class="text-base font-medium text-gray-900 hover:bg-gray-50 px-4 py-3 rounded-xl transition-colors">Companies</a>
+           <a href="#" (click)="closeMenu()" class="text-base font-medium text-gray-900 hover:bg-gray-50 px-4 py-3 rounded-xl transition-colors">Salaries</a>
+           
+           <div class="h-px bg-gray-100 my-2"></div>
+           
+           <div class="flex flex-col gap-3">
+             <a routerLink="/login" (click)="closeMenu()" class="w-full inline-flex items-center justify-center px-4 py-3 border border-gray-200 shadow-sm text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+                Log in
+             </a>
+             <a routerLink="/signup" (click)="closeMenu()" class="w-full inline-flex items-center justify-center px-4 py-3 border border-transparent shadow-sm text-base font-medium rounded-xl text-white bg-violet-600 hover:bg-violet-700 transition-colors">
+                Sign up
+             </a>
+           </div>
+        </nav>
+      </div>
+    }
+
     <!-- Spacer for fixed header -->
     <div class="h-16"></div>
